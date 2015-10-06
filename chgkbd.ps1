@@ -6,7 +6,8 @@ if ($opt -eq "en") {
 	$option = @("kbd106.dll", "PCAT_106KEY", "2")
 	Write-Host "Switch to Japanese mode"
 } else {
-	Write-Host "Illegal option"
+	Write-Host "Current status:" -NoNewLine
+	Get-ItemProperty HKLM:\System\CurrentControlSet\Services\i8042prt\Parameters
 	break
 }
 Set-ItemProperty HKLM:\System\CurrentControlSet\Services\i8042prt\Parameters -name "LayerDriver JPN" -value $option[0]
